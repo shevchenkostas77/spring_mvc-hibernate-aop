@@ -17,7 +17,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional // спринг автоматически управляет открытием и закрытием транзакций
+//    @Transactional // спринг автоматически управляет открытием и закрытием транзакций
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
 
@@ -30,4 +30,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
         return allEmplyees;
     }
+
+    @Override
+    public void saveEmployee(Employee employee) {
+        Session session = sessionFactory.getCurrentSession();
+        session.save(employee);
+    }
+
 }
